@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 function Form(props) {
-  const { Login } = props;
+  const { login } = props;
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -17,7 +17,7 @@ function Form(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    Login({
+    login({
       nameLogin: name,
       passwordLogin: password,
     });
@@ -45,7 +45,7 @@ function Form(props) {
 }
 
 Form.propTypes = {
-  Login: PropTypes.instanceOf(Object).isRequired,
+  login: PropTypes.instanceOf(Function).isRequired,
 };
 
 export default Form;

@@ -2,30 +2,33 @@ import React, { useState } from 'react';
 
 import PropTypes from 'prop-types';
 
-import ProductsItems from '../ProductItem';
+import ProductItem from '../ProductItem';
 import Pagination from '../Pagination';
-/* eslint-disable */ 
+
 const ProductContainer = (props) => {
   const { products } = props;
 
   const [currentPage, setCurrentPage] = useState(1);
 
   const perPage = 5;
-  // mặc định sẽ có bao nhiêu trang
-  const indexOfLastPost = currentPage * perPage;
-  // lấy cuối trang
+  const currentPageStrorage = localStorage.getItem('currentPageStrorage');
+  const indexOfLastPost = currentPageStrorage * perPage;
+
   const indexOfFirst = indexOfLastPost - perPage;
-  // lấy đầu trang trang
   const currentPost = products && products.slice(indexOfFirst, indexOfLastPost);
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+  const onChangePage = (pageNumber) => {
+    localStorage.setItem('currentPageStrorage', currentPage);
+    setCurrentPage(pageNumber);
+  };
+
   return (
     <div className="product-list">
       <div className="container">
         <div className="col-12 d-flex flex-wrap">
           {currentPost
             && currentPost.map((item) => (
-              <ProductsItems
+              <ProductItem
                 key={item.id}
                 title={item.title}
                 image={item.image}
@@ -37,7 +40,7 @@ const ProductContainer = (props) => {
         </div>
         <Pagination
           perPage={perPage}
-          paginate={paginate}
+          onChangePage={onChangePage}
           totalPost={products.length}
         />
       </div>

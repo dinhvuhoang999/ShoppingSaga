@@ -6,7 +6,7 @@ import Form from './Form';
 import * as ActionTypes from '../../redux/actionTypes';
 
 const mapDispatchToProps = (dispatch) => ({
-  Login: (payload) => (
+  login: (payload) => (
     dispatch({
       type: ActionTypes.LOGIN,
       payload,

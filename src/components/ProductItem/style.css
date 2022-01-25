@@ -9,7 +9,7 @@
     top: 10px
 }
 
-.img-prodcuts {
+.td_img-contain {
     object-fit: contain;
 }
 
@@ -20,7 +20,7 @@
     -webkit-box-orient: vertical;
 }
 
-.title-product {
+.td_title--trim {
     width: 200px;
     white-space: nowrap;
     overflow: hidden;
@@ -74,10 +74,12 @@
     height: 48px;
     font-size: 18px
 }
+
 .total-cart {
     right: 0px;
     top: 25px;
 }
+
 .pagination {
     justify-content: center;
 }

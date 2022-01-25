@@ -3,21 +3,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Pagination(props) {
-  const { perPage, totalPost, paginate } = props;
+  const { perPage, totalPost, onChangePage } = props;
 
   const pageNumber = [];
 
   for (let i = 1; i <= Math.ceil(totalPost / perPage); i += 1) {
     pageNumber.push(i);
   }
+
+  const onKeyDownDiv = () => null;
+
   return (
     <nav>
       <ul className="pagination">
         {pageNumber.map((number) => (
           <li key={number} className="page-item">
-            <a href="!#" onClick={() => paginate(number)} className="page-link">
+            <div
+              role="button"
+              onKeyDown={onKeyDownDiv}
+              tabIndex={0}
+              onClick={() => onChangePage(number)}
+              className="page-link"
+            >
               {number}
-            </a>
+            </div>
           </li>
         ))}
       </ul>
@@ -28,7 +37,7 @@ function Pagination(props) {
 Pagination.propTypes = {
   perPage: PropTypes.number.isRequired,
   totalPost: PropTypes.number.isRequired,
-  paginate: PropTypes.instanceOf(Function).isRequired,
+  onChangePage: PropTypes.instanceOf(Function).isRequired,
 };
 
 export default Pagination;

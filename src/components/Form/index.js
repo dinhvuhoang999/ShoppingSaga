@@ -1,3 +1,3 @@
-import form from './Form.container';
+import Form from './Form.container';
 
-export default form;
+export default Form;

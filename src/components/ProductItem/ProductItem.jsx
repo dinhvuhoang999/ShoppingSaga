@@ -1,6 +1,8 @@
 import React from 'react';
 import './style.css';
 
+import PropTypes from 'prop-types';
+
 function ProductItem(props) {
   const {
     title, image, price, description, rate, addToCart,
@@ -13,7 +15,7 @@ function ProductItem(props) {
           <div className="mt-2">
             <h4 className="text-uppercase">{price}</h4>
             <div className="mt-5">
-              <h5 className="text-uppercase mb-0 title-product">{title}</h5>
+              <h5 className="text-uppercase mb-0 td_title--trim">{title}</h5>
               <h1 className="main-heading mt-0">VASE</h1>
               <div className="d-flex flex-row user-ratings">
                 <div className="ratings">
@@ -27,7 +29,7 @@ function ProductItem(props) {
             </div>
           </div>
           <div className="image">
-            <img className="img-prodcuts" alt="" src={image} width={130} />
+            <img className="td_img-contain" alt="" src={image} width={130} />
           </div>
         </div>
         <p className="description">{description}</p>
@@ -48,5 +50,14 @@ function ProductItem(props) {
     </div>
   );
 }
+
+ProductItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  rate: PropTypes.number.isRequired,
+  addToCart: PropTypes.instanceOf(Function).isRequired,
+};
 
 export default ProductItem;

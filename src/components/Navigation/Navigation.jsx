@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Navigation(props) {
-  const { cartState, username, Logout } = props;
+  const { cartState, username, logout } = props;
 
   return (
     <div>
@@ -15,7 +15,7 @@ function Navigation(props) {
             ) : (
               <>
                 <div>{username}</div>
-                <button type="submit" onClick={Logout}>logout</button>
+                <button type="submit" onClick={logout}>logout</button>
               </>
             )}
           </a>
@@ -62,7 +62,7 @@ function Navigation(props) {
 Navigation.propTypes = {
   cartState: PropTypes.instanceOf(Object).isRequired,
   username: PropTypes.string,
-  Logout: PropTypes.instanceOf(Object).isRequired,
+  logout: PropTypes.instanceOf(Function).isRequired,
 };
 
 Navigation.defaultProps = {

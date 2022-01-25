@@ -2,7 +2,7 @@ import {
   connect,
 } from 'react-redux';
 
-import productItem from './ProductItem';
+import ProductItem from './ProductItem';
 
 import * as ActionTypes from '../../redux/actionTypes';
 
@@ -15,4 +15,4 @@ const mapDispatchToProps = (dispatch) => ({
   ),
 });
 
-export default connect(null, mapDispatchToProps)(productItem);
+export default connect(null, mapDispatchToProps)(ProductItem);
