@@ -10,6 +10,7 @@ function Cart(props) {
     increase,
     decrease,
     update,
+    remove,
   } = props;
   let total = 0;
   if (cart !== 'undefined') {
@@ -51,6 +52,7 @@ function Cart(props) {
               <CartItem
                 key={item.id}
                 update={update}
+                remove={remove}
                 increase={increase}
                 decrease={decrease}
                 total={total}
@@ -90,6 +92,7 @@ Cart.propTypes = {
   increase: PropTypes.instanceOf(Function).isRequired,
   decrease: PropTypes.instanceOf(Function).isRequired,
   update: PropTypes.instanceOf(Function).isRequired,
+  remove: PropTypes.instanceOf(Function).isRequired,
 };
 
 export default Cart;

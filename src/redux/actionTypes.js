@@ -11,6 +11,7 @@ export const CART = 'CART';
 export const UPDATE_CARD = 'UPDATE_CARD';
 export const INCREASE = 'INCREASE';
 export const DECREASE = 'DECREASE';
+export const DELETE = 'DELETE';
 
 // Authentication
 export const LOGIN = 'LOGIN';

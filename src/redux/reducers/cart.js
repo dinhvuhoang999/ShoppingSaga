@@ -1,9 +1,9 @@
-/* eslint-disable */
 import {
   ADD_TO_CART,
   INCREASE,
   DECREASE,
   UPDATE_CARD,
+  DELETE,
 } from '../actionTypes';
 
 const initialState = {
@@ -41,13 +41,12 @@ export default function cartReducer(state = initialState, action) {
     }
     case INCREASE: {
       const cart = cartDemo.map((item) => {
-        if (item.id === action.id) {
+        if (item.id === action.payload) {
           const itemTamp = {
-            ...item
+            ...item,
           };
 
           itemTamp.quantity += 1;
-
           return itemTamp;
         }
 
@@ -62,9 +61,9 @@ export default function cartReducer(state = initialState, action) {
     }
     case DECREASE: {
       const cart = cartDemo.map((item) => {
-        if (item.id === action.id) {
+        if (item.id === action.payload) {
           const itemTamp = {
-            ...item
+            ...item,
           };
 
           itemTamp.quantity -= 1;
@@ -81,10 +80,18 @@ export default function cartReducer(state = initialState, action) {
         numberCart: state.numberCart - 1,
       };
     }
+    case DELETE: {
+      const cartDelete = cartDemo.find((item) => item.id === action.payload);
+      return {
+        ...state,
+        cart: state.cart.filter((cartItem) => cartItem.id !== action.payload),
+        numberCart: state.numberCart - cartDelete.quantity,
+      };
+    }
     case UPDATE_CARD: {
       const cartItem = cartDemo.find((item) => item.id === action.id);
-      cartItem.quantity = action.payload.quantity;
-      const updateNumber = state.numberCart + action.payload.quantity - cartItem.quantity;
+      const updateNumber = state.numberCart + action.quantity - cartItem.quantity;
+      cartItem.quantity = action.quantity;
       return {
         ...state,
         cart: cartDemo,

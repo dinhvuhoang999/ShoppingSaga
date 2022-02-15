@@ -11,8 +11,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  increase: () => dispatch({
+  increase: (payload) => dispatch({
     type: ActionTypes.INCREASE,
+    payload,
   }),
 
   decrease: (payload) => (
@@ -21,10 +22,17 @@ const mapDispatchToProps = (dispatch) => ({
       payload,
     })
   ),
-  update: (payload) => (
+  remove: (payload) => (
+    dispatch({
+      type: ActionTypes.DELETE,
+      payload,
+    })
+  ),
+  update: (id, quantity) => (
     dispatch({
       type: ActionTypes.UPDATE_CARD,
-      payload,
+      id,
+      quantity,
     })
   ),
 });

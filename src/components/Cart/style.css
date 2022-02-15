@@ -55,7 +55,9 @@
     background: #ecf0f1;
     box-shadow: 0 0.5em 0 rgba(138, 148, 152, 0.2);
   } */
-  
+  .in-b {
+    max-width: 50% !important;
+  }
   .heading {
     padding: 1em;
     position: relative;

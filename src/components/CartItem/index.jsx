@@ -6,15 +6,20 @@ function CartItem(props) {
     item,
     increase,
     decrease,
+    remove,
     update,
   } = props;
   const [amount, setQuantity] = useState(item.quantity);
-  const onBlurInput = () => update(item.id, amount);
-  const onChangeInput = (e) => setQuantity(parseInt(e.target.value, 10));
-  const onIcreaseQuantity = () => increase(item.id);
+
   useEffect(() => {
     setQuantity(item.quantity);
   }, [item.quantity]);
+
+  const onChangeInput = (e) => setQuantity(parseInt(e.target.value, 10));
+  const onIncreaseQuantity = () => increase(item.id);
+  const onDecreaseQuantity = () => decrease(item.id);
+  const onRemoveButton = () => remove(item.id);
+  const onBlurInput = () => update(item.id, amount);
 
   return (
     <div className="layout-inline row">
@@ -28,18 +33,35 @@ function CartItem(props) {
       </div>
 
       <div className="col col-qty layout-inline">
-        <a onClick={decrease} href="#s" className="qty qty-minus">
+        <button
+          type="button"
+          className="qty qty-minus m-2"
+          onClick={() => {
+            if (item.quantity === 1) {
+              return onRemoveButton();
+            }
+            return onDecreaseQuantity();
+          }}
+        >
           -
-        </a>
+        </button>
         <input
-          onChange={onChangeInput}
           onBlur={onBlurInput}
+          onChange={onChangeInput}
           type="number"
           value={amount}
+          className="in-b"
         />
-        <a onClick={onIcreaseQuantity} href="#s" className="qty qty-plus">
+        <button
+          type="button"
+          onClick={onIncreaseQuantity}
+          className="qty qty-plus m-2"
+        >
           +
-        </a>
+        </button>
+        <button type="button" onClick={onRemoveButton}>
+          X
+        </button>
       </div>
     </div>
   );
@@ -50,6 +72,7 @@ CartItem.propTypes = {
   increase: PropTypes.instanceOf(Function).isRequired,
   decrease: PropTypes.instanceOf(Function).isRequired,
   update: PropTypes.instanceOf(Function).isRequired,
+  remove: PropTypes.instanceOf(Function).isRequired,
 };
 
 export default CartItem;
