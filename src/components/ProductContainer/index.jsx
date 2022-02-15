@@ -30,6 +30,7 @@ const ProductContainer = (props) => {
             && currentPost.map((item) => (
               <ProductItem
                 key={item.id}
+                id={item.id}
                 title={item.title}
                 image={item.image}
                 price={item.price}

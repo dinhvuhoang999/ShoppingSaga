@@ -5,8 +5,25 @@ import PropTypes from 'prop-types';
 
 function ProductItem(props) {
   const {
-    title, image, price, description, rate, addToCart,
+    id,
+    title,
+    image,
+    price,
+    description,
+    rate,
+    addToCart,
   } = props;
+
+  const onHandleAddToCart = () => {
+    addToCart({
+      id,
+      title,
+      image,
+      price,
+      description,
+      rate,
+    });
+  };
 
   return (
     <div className="height d-flex justify-content-center align-items-center">
@@ -36,13 +53,7 @@ function ProductItem(props) {
         <button
           type="submit"
           className="btn btn-danger"
-          onClick={() => addToCart({
-            title,
-            image,
-            price,
-            description,
-            rate,
-          })}
+          onClick={onHandleAddToCart}
         >
           Add to cart
         </button>
@@ -57,6 +68,7 @@ ProductItem.propTypes = {
   price: PropTypes.number.isRequired,
   description: PropTypes.string.isRequired,
   rate: PropTypes.number.isRequired,
+  id: PropTypes.number.isRequired,
   addToCart: PropTypes.instanceOf(Function).isRequired,
 };
 

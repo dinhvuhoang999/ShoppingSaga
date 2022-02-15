@@ -4,6 +4,14 @@ export const GET_PRODUCTS_FAILED = 'GET_PRODUCTS_FAILED';
 export const GET_PRODUCTS_PENDING = 'GET_PRODUCTS_PENDING';
 
 export const ADD_TO_CART = 'ADD_TO_CART';
+export const GET_CART_SUCCESS = 'GET_CART_SUCCESS';
+export const GET_CART_PENDING = 'GET_CART_PENDING';
+export const GET_CART_FAILD = 'GET_CART_FAILD';
+export const CART = 'CART';
+export const UPDATE_CARD = 'UPDATE_CARD';
+export const INCREASE = 'INCREASE';
+export const DECREASE = 'DECREASE';
+
 // Authentication
 export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

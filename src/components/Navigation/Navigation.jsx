@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
@@ -33,10 +34,10 @@ function Navigation(props) {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-item active">
-                <a className="nav-link" href="#q">
-                  Fake Login
+                <Link className="nav-link" to="/">
+                  HomePage
                   <span className="sr-only">(current)</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="#q">
@@ -44,9 +45,9 @@ function Navigation(props) {
                 </a>
               </li>
               <li className="nav-item position-relative">
-                <a className="nav-link" href="#q">
+                <Link to="/cart" className="nav-link">
                   <i className="fas fa-shopping-cart" />
-                </a>
+                </Link>
                 <div className="total-cart position-absolute right-0">
                   {cartState.numberCart}
                 </div>
