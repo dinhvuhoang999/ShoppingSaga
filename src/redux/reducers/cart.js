@@ -41,7 +41,7 @@ export default function cartReducer(state = initialState, action) {
     }
     case INCREASE: {
       const cart = cartDemo.map((item) => {
-        if (item.id === action.payload) {
+        if (item.id === action.payload.id) {
           const itemTamp = {
             ...item,
           };
@@ -61,7 +61,7 @@ export default function cartReducer(state = initialState, action) {
     }
     case DECREASE: {
       const cart = cartDemo.map((item) => {
-        if (item.id === action.payload) {
+        if (item.id === action.payload.id) {
           const itemTamp = {
             ...item,
           };
@@ -81,17 +81,17 @@ export default function cartReducer(state = initialState, action) {
       };
     }
     case DELETE: {
-      const cartDelete = cartDemo.find((item) => item.id === action.payload);
+      const cartDelete = cartDemo.find((item) => item.id === action.payload.id);
       return {
         ...state,
-        cart: state.cart.filter((cartItem) => cartItem.id !== action.payload),
+        cart: state.cart.filter((cartItem) => cartItem.id !== action.payload.id),
         numberCart: state.numberCart - cartDelete.quantity,
       };
     }
     case UPDATE_CARD: {
-      const cartItem = cartDemo.find((item) => item.id === action.id);
-      const updateNumber = state.numberCart + action.quantity - cartItem.quantity;
-      cartItem.quantity = action.quantity;
+      const cartItem = cartDemo.find((item) => item.id === action.payload.id);
+      const updateNumber = state.numberCart + action.payload.quantity - cartItem.quantity;
+      cartItem.quantity = action.payload.quantity;
       return {
         ...state,
         cart: cartDemo,
