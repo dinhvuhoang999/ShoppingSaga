@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-
 import { useLocation } from 'react-router-dom';
+
+import PropTypes from 'prop-types';
 
 import ProductItem from '../ProductItem';
 import Pagination from '../Pagination';
 
 const ProductContainer = (props) => {
   const { products } = props;
+
   const { search } = useLocation();
+
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
