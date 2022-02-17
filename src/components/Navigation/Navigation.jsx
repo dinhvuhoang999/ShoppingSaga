@@ -63,7 +63,7 @@ function Navigation(props) {
 Navigation.propTypes = {
   cartState: PropTypes.instanceOf(Object).isRequired,
   username: PropTypes.string,
-  logout: PropTypes.instanceOf(Function).isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 Navigation.defaultProps = {

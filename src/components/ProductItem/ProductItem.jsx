@@ -69,7 +69,7 @@ ProductItem.propTypes = {
   description: PropTypes.string.isRequired,
   rate: PropTypes.number.isRequired,
   id: PropTypes.number.isRequired,
-  addToCart: PropTypes.instanceOf(Function).isRequired,
+  addToCart: PropTypes.func.isRequired,
 };
 
 export default ProductItem;

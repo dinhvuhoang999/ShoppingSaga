@@ -1,21 +1,23 @@
 import React from 'react';
-/* eslint-disable */
-import CartItem from '../CartItem';
 import PropTypes from 'prop-types';
 
-function MyItem({myItemState}) {
-  console.log('MyItem', myItemState);
+import CartItem from '../CartItem';
+
+function MyItem(props) {
+  const { myItemState } = props;
+
   return (
-    <>
-      {
-          myItemState && myItemState.myItem.map((item) => (
-            <CartItem key={item.id} item ={item} />
-          ))
-      }
-    </>
+    <div>
+      {myItemState
+          && myItemState.myItem.map((item) => (
+            <CartItem key={item.id} item={item} />
+          ))}
+    </div>
   );
 }
+
 MyItem.propTypes = {
   myItemState: PropTypes.instanceOf(Object).isRequired,
 };
+
 export default MyItem;

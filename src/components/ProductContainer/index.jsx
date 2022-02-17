@@ -13,10 +13,10 @@ const ProductContainer = (props) => {
 
   useEffect(() => {
     const params = new URLSearchParams(search);
-    console.log('page', params);
-    const q = params.get('page');
 
-    setCurrentPage(q);
+    const numberQuery = params.get('page');
+
+    setCurrentPage(numberQuery || 1);
   });
 
   const perPage = 5;
@@ -24,11 +24,10 @@ const ProductContainer = (props) => {
   const indexOfLastPost = currentPage * perPage;
 
   const indexOfFirst = indexOfLastPost - perPage;
+
   const currentPost = products && products.slice(indexOfFirst, indexOfLastPost);
 
-  const onChangePage = (pageNumber) => {
-    setCurrentPage(pageNumber);
-  };
+  const onChangePage = (pageNumber) => (setCurrentPage(pageNumber));
 
   return (
     <div className="product-list">

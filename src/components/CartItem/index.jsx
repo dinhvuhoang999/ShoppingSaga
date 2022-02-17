@@ -76,10 +76,10 @@ function CartItem(props) {
 
 CartItem.propTypes = {
   item: PropTypes.instanceOf(Object).isRequired,
-  increase: PropTypes.instanceOf(Function),
-  decrease: PropTypes.instanceOf(Function),
-  update: PropTypes.instanceOf(Function),
-  remove: PropTypes.instanceOf(Function),
+  increase: PropTypes.func,
+  decrease: PropTypes.func,
+  update: PropTypes.func,
+  remove: PropTypes.func,
 };
 
 CartItem.defaultProps = {

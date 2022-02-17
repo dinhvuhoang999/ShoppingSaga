@@ -1,4 +1,3 @@
-/* eslint-disable */
 import {
   ADD_TO_CART,
   INCREASE,
@@ -103,13 +102,13 @@ export default function cartReducer(state = initialState, action) {
         numberCart: updateNumber,
       };
     }
-    
+
     case RESET_CARD: {
       return {
         cart: [],
         numberCart: 0,
         total: 0,
-      }
+      };
     }
     default:
       return state;

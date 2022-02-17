@@ -94,11 +94,11 @@ function Cart(props) {
 
 Cart.propTypes = {
   cart: PropTypes.instanceOf(Object).isRequired,
-  increase: PropTypes.instanceOf(Function).isRequired,
-  decrease: PropTypes.instanceOf(Function).isRequired,
-  update: PropTypes.instanceOf(Function).isRequired,
-  remove: PropTypes.instanceOf(Function).isRequired,
-  buy: PropTypes.instanceOf(Function).isRequired,
+  increase: PropTypes.func.isRequired,
+  decrease: PropTypes.func.isRequired,
+  update: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired,
+  buy: PropTypes.func.isRequired,
   resetCard: PropTypes.func.isRequired,
 };
 

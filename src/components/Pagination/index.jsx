@@ -1,14 +1,17 @@
 import React from 'react';
-/* eslint-disable */
-import { useNavigate } from 'react-router-dom';
-import queryString from 'query-string';
+
+import { useNavigate, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function Pagination(props) {
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const { perPage, totalPost, onChangePage } = props;
-  
+  const {
+    perPage,
+    totalPost,
+    onChangePage,
+  } = props;
   const pageNumber = [];
 
   for (let i = 1; i <= Math.ceil(totalPost / perPage); i += 1) {
@@ -19,8 +22,7 @@ function Pagination(props) {
   return (
     <nav>
       <ul className="pagination">
-        {pageNumber.map((number) => {
-          return(
+        {pageNumber.map((number) => (
           <li key={number} className="page-item">
             <button
               type="button"
@@ -30,11 +32,9 @@ function Pagination(props) {
               className="page-link"
             >
               {number}
-              {/* {page} */}
             </button>
           </li>
-          )
-        })} 
+        ))}
       </ul>
     </nav>
   );
@@ -43,7 +43,7 @@ function Pagination(props) {
 Pagination.propTypes = {
   perPage: PropTypes.number.isRequired,
   totalPost: PropTypes.number.isRequired,
-  onChangePage: PropTypes.instanceOf(Function).isRequired,
+  onChangePage: PropTypes.func.isRequired,
 };
 
 export default Pagination;

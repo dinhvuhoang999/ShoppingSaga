@@ -45,7 +45,7 @@ function Form(props) {
 }
 
 Form.propTypes = {
-  login: PropTypes.instanceOf(Function).isRequired,
+  login: PropTypes.func.isRequired,
 };
 
 export default Form;
