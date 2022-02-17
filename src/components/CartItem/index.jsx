@@ -9,6 +9,7 @@ function CartItem(props) {
     remove,
     update,
   } = props;
+
   const [amount, setQuantity] = useState(item.quantity);
 
   useEffect(() => {
@@ -45,6 +46,7 @@ function CartItem(props) {
         >
           -
         </button>
+
         {update && (
           <input
             onBlur={onBlurInput}
@@ -64,6 +66,7 @@ function CartItem(props) {
             +
           </button>
         )}
+
         {remove && (
           <button type="button" onClick={onRemoveButton}>
             X

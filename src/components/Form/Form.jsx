@@ -5,6 +5,7 @@ function Form(props) {
   const { login } = props;
 
   const [name, setName] = useState('');
+
   const [password, setPassword] = useState('');
 
   const handleChangeName = (e) => {
@@ -22,6 +23,7 @@ function Form(props) {
       passwordLogin: password,
     });
   };
+
   return (
     <form>
       <div className="form-group">
