@@ -19,7 +19,7 @@ const ProductContainer = (props) => {
     const numberQuery = params.get('page');
 
     setCurrentPage(numberQuery || 1);
-  }, []);
+  }, [currentPage]);
 
   const perPage = 5;
 

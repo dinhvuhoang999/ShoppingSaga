@@ -10,6 +10,7 @@ const productsReducer = (state = defaultState, action) => {
   switch (action.type) {
     case MY_ITEM: {
       const myItem = [
+        ...state.myItem,
         ...action.payload,
       ];
 
