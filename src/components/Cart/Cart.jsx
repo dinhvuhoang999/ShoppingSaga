@@ -14,11 +14,13 @@ function Cart(props) {
     buy,
     resetCard,
   } = props;
+
   let total = 0;
+
   if (cart !== 'undefined') {
     cart.cart.forEach((item) => {
       total += item.price * item.quantity;
-      total.toFixed(2);
+      total.toFixed(10);
     });
   }
 
