@@ -1,10 +1,14 @@
 import React from 'react';
-
+/* eslint-disable */
+import { useNavigate } from 'react-router-dom';
+import queryString from 'query-string';
 import PropTypes from 'prop-types';
 
 function Pagination(props) {
-  const { perPage, totalPost, onChangePage } = props;
+  const navigate = useNavigate();
 
+  const { perPage, totalPost, onChangePage } = props;
+  
   const pageNumber = [];
 
   for (let i = 1; i <= Math.ceil(totalPost / perPage); i += 1) {
@@ -12,23 +16,25 @@ function Pagination(props) {
   }
 
   const onKeyDownDiv = () => null;
-
   return (
     <nav>
       <ul className="pagination">
-        {pageNumber.map((number) => (
+        {pageNumber.map((number) => {
+          return(
           <li key={number} className="page-item">
-            <div
-              role="button"
+            <button
+              type="button"
               onKeyDown={onKeyDownDiv}
               tabIndex={0}
-              onClick={() => onChangePage(number)}
+              onClick={() => onChangePage(navigate(`${location.pathname}?page=${number}`))}
               className="page-link"
             >
               {number}
-            </div>
+              {/* {page} */}
+            </button>
           </li>
-        ))}
+          )
+        })} 
       </ul>
     </nav>
   );

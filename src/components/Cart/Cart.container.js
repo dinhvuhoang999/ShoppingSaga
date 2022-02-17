@@ -26,6 +26,7 @@ const mapDispatchToProps = (dispatch) => ({
       },
     })
   ),
+
   remove: (id) => (
     dispatch({
       type: ActionTypes.DELETE,
@@ -34,6 +35,7 @@ const mapDispatchToProps = (dispatch) => ({
       },
     })
   ),
+
   update: (id, quantity) => (
     dispatch({
       type: ActionTypes.UPDATE_CARD,
@@ -43,6 +45,15 @@ const mapDispatchToProps = (dispatch) => ({
       },
     })
   ),
+
+  buy: (payload) => dispatch({
+    type: ActionTypes.MY_ITEM,
+    payload,
+  }),
+
+  resetCard: () => dispatch({
+    type: ActionTypes.RESET_CARD,
+  }),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

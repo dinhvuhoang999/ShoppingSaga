@@ -40,9 +40,9 @@ function Navigation(props) {
                 </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#q">
+                <Link className="nav-link" to="/myItem">
                   My Item
-                </a>
+                </Link>
               </li>
               <li className="nav-item position-relative">
                 <Link to="/cart" className="nav-link">

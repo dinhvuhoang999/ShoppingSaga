@@ -12,7 +12,8 @@ export const UPDATE_CARD = 'UPDATE_CARD';
 export const INCREASE = 'INCREASE';
 export const DECREASE = 'DECREASE';
 export const DELETE = 'DELETE';
-
+export const MY_ITEM = 'MY_ITEM';
+export const RESET_CARD = 'RESET_CARD';
 // Authentication
 export const LOGIN = 'LOGIN';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';

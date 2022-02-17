@@ -45,23 +45,30 @@ function CartItem(props) {
         >
           -
         </button>
-        <input
-          onBlur={onBlurInput}
-          onChange={onChangeInput}
-          type="number"
-          value={amount}
-          className="in-b"
-        />
-        <button
-          type="button"
-          onClick={onIncreaseQuantity}
-          className="qty qty-plus m-2"
-        >
-          +
-        </button>
-        <button type="button" onClick={onRemoveButton}>
-          X
-        </button>
+        {update && (
+          <input
+            onBlur={onBlurInput}
+            onChange={onChangeInput}
+            type="number"
+            value={amount}
+            className="in-b"
+          />
+        )}
+
+        {increase && (
+          <button
+            type="button"
+            onClick={onIncreaseQuantity}
+            className="qty qty-plus m-2"
+          >
+            +
+          </button>
+        )}
+        {remove && (
+          <button type="button" onClick={onRemoveButton}>
+            X
+          </button>
+        )}
       </div>
     </div>
   );
@@ -69,10 +76,17 @@ function CartItem(props) {
 
 CartItem.propTypes = {
   item: PropTypes.instanceOf(Object).isRequired,
-  increase: PropTypes.instanceOf(Function).isRequired,
-  decrease: PropTypes.instanceOf(Function).isRequired,
-  update: PropTypes.instanceOf(Function).isRequired,
-  remove: PropTypes.instanceOf(Function).isRequired,
+  increase: PropTypes.instanceOf(Function),
+  decrease: PropTypes.instanceOf(Function),
+  update: PropTypes.instanceOf(Function),
+  remove: PropTypes.instanceOf(Function),
+};
+
+CartItem.defaultProps = {
+  increase: () => {},
+  decrease: () => {},
+  update: () => {},
+  remove: () => {},
 };
 
 export default CartItem;

@@ -1,9 +1,11 @@
+/* eslint-disable */
 import {
   ADD_TO_CART,
   INCREASE,
   DECREASE,
   UPDATE_CARD,
   DELETE,
+  RESET_CARD,
 } from '../actionTypes';
 
 const initialState = {
@@ -39,6 +41,7 @@ export default function cartReducer(state = initialState, action) {
         numberCart: state.numberCart + 1,
       };
     }
+
     case INCREASE: {
       const cart = cartDemo.map((item) => {
         if (item.id === action.payload.id) {
@@ -59,6 +62,7 @@ export default function cartReducer(state = initialState, action) {
         numberCart: state.numberCart + 1,
       };
     }
+
     case DECREASE: {
       const cart = cartDemo.map((item) => {
         if (item.id === action.payload.id) {
@@ -73,13 +77,13 @@ export default function cartReducer(state = initialState, action) {
 
         return item;
       });
-
       return {
         ...state,
         cart,
         numberCart: state.numberCart - 1,
       };
     }
+
     case DELETE: {
       const cartDelete = cartDemo.find((item) => item.id === action.payload.id);
       return {
@@ -88,6 +92,7 @@ export default function cartReducer(state = initialState, action) {
         numberCart: state.numberCart - cartDelete.quantity,
       };
     }
+
     case UPDATE_CARD: {
       const cartItem = cartDemo.find((item) => item.id === action.payload.id);
       const updateNumber = state.numberCart + action.payload.quantity - cartItem.quantity;
@@ -97,6 +102,14 @@ export default function cartReducer(state = initialState, action) {
         cart: cartDemo,
         numberCart: updateNumber,
       };
+    }
+    
+    case RESET_CARD: {
+      return {
+        cart: [],
+        numberCart: 0,
+        total: 0,
+      }
     }
     default:
       return state;

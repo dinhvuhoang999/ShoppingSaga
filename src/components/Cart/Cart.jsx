@@ -11,6 +11,8 @@ function Cart(props) {
     decrease,
     update,
     remove,
+    buy,
+    resetCard,
   } = props;
   let total = 0;
   if (cart !== 'undefined') {
@@ -19,6 +21,13 @@ function Cart(props) {
       total.toFixed(2);
     });
   }
+
+  const onBuyMyItem = () => buy(cart.cart);
+
+  const onClickBuy = () => {
+    onBuyMyItem();
+    resetCard();
+  };
 
   return (
     <div className="container">
@@ -34,10 +43,6 @@ function Cart(props) {
       </div>
 
       <div className="cart transition is-open">
-        <a href="s#" className="btn btn-update">
-          Update cart
-        </a>
-
         <div className="table">
           <div className="layout-inline row th">
             <div className="col col-pro">Product</div>
@@ -79,8 +84,8 @@ function Cart(props) {
           </div>
         </div>
 
-        <a href="#da" className="btn btn-update">
-          Update cart
+        <a onClick={onClickBuy} href="#da" className="btn btn-update">
+          Buy
         </a>
       </div>
     </div>
@@ -93,6 +98,8 @@ Cart.propTypes = {
   decrease: PropTypes.instanceOf(Function).isRequired,
   update: PropTypes.instanceOf(Function).isRequired,
   remove: PropTypes.instanceOf(Function).isRequired,
+  buy: PropTypes.instanceOf(Function).isRequired,
+  resetCard: PropTypes.func.isRequired,
 };
 
 export default Cart;
