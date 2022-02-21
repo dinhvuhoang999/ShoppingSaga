@@ -15,7 +15,6 @@ const initialState = {
 
 export default function cartReducer(state = initialState, action) {
   const cartDemo = [...state.cart];
-
   switch (action.type) {
     case ADD_TO_CART: {
       const cartItem = cartDemo.find((item) => item.id === action.payload.id);
@@ -89,6 +88,7 @@ export default function cartReducer(state = initialState, action) {
         ...state,
         cart: state.cart.filter((cartItem) => cartItem.id !== action.payload.id),
         numberCart: state.numberCart - cartDelete.quantity,
+
       };
     }
 

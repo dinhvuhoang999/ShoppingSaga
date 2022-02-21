@@ -11,15 +11,14 @@ function CartItem(props) {
   } = props;
 
   const [amount, setQuantity] = useState(item.quantity);
-
   useEffect(() => {
     setQuantity(item.quantity);
   }, [item.quantity]);
 
   const onChangeInput = (e) => setQuantity(parseInt(e.target.value, 10));
-  const onIncreaseQuantity = () => increase(item.id);
-  const onDecreaseQuantity = () => decrease(item.id);
-  const onRemoveButton = () => remove(item.id);
+  const onIncreaseQuantity = () => increase(item);
+  const onDecreaseQuantity = () => decrease(item);
+  const onRemoveButton = () => remove(item);
   const onBlurInput = () => update(item.id, amount);
 
   return (
@@ -30,7 +29,7 @@ function CartItem(props) {
       </div>
 
       <div className="col col-price col-numeric align-center ">
-        <p>{item.price}</p>
+        <p>{item.price * item.quantity}</p>
       </div>
 
       <div className="col col-qty layout-inline">

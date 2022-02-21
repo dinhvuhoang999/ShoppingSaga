@@ -11,28 +11,22 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  increase: (id) => dispatch({
+  increase: (payload) => dispatch({
     type: ActionTypes.INCREASE,
-    payload: {
-      id,
-    },
+    payload,
   }),
 
-  decrease: (id) => (
+  decrease: (payload) => (
     dispatch({
       type: ActionTypes.DECREASE,
-      payload: {
-        id,
-      },
+      payload,
     })
   ),
 
-  remove: (id) => (
+  remove: (payload) => (
     dispatch({
       type: ActionTypes.DELETE,
-      payload: {
-        id,
-      },
+      payload,
     })
   ),
 
