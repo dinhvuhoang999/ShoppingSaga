@@ -19,7 +19,6 @@ function* login(action) {
   yield put({
     type: LOGIN_PENDING,
   });
-
   try {
     const {
       data,

@@ -6,36 +6,36 @@ import {
 import axios from 'axios';
 
 import {
-  GET_PRODUCTS,
-  GET_PRODUCTS_SUCCESS,
-  GET_PRODUCTS_PENDING,
-  GET_PRODUCTS_FAILED,
+  GET_CATEGORY,
+  GET_CATEGORY_SUCCESS,
+  GET_CATEGORY_FAILED,
+  GET_CATEGORY_PENDING,
 } from '../actionTypes';
 
-function* getProducts() {
+function* getCategorys() {
   yield put({
-    type: GET_PRODUCTS_PENDING,
+    type: GET_CATEGORY_PENDING,
   });
   try {
     const {
       data,
     } = yield axios({
       method: 'GET',
-      url: 'https://fakestoreapi.com/products',
+      url: 'https://fakestoreapi.com/products/categories',
     });
 
     yield put({
-      type: GET_PRODUCTS_SUCCESS,
+      type: GET_CATEGORY_SUCCESS,
       payload: data,
     });
   } catch (error) {
     yield put({
-      type: GET_PRODUCTS_FAILED,
+      type: GET_CATEGORY_FAILED,
       error,
     });
   }
 }
 
 export default function* sagas() {
-  yield takeLatest(GET_PRODUCTS, getProducts);
+  yield takeLatest(GET_CATEGORY, getCategorys);
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { useNavigate, useLocation } from 'react-router-dom';
+
 import PropTypes from 'prop-types';
 
 function Pagination(props) {

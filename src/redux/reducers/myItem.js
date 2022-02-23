@@ -22,6 +22,7 @@ const itemReducer = (state = defaultState, action) => {
           myItem: [...cartDemo, ...cartAction],
         };
       }
+
       const cartItem = cartDemo.filter((o1) => cartAction.some((o2) => o1.id === o2.id));
       const cartCheck = cartAction.filter((o1) => !cartDemo.some((o2) => o1.id === o2.id));
 
