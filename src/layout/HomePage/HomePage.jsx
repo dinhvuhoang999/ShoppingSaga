@@ -24,13 +24,12 @@ function HomePage(props) {
 
   const [filterProducts, setFilterProducts] = useState('all');
   const params = new URLSearchParams(location.search);
-
   const categotyrQuery = params.get('category');
 
   useEffect(() => {
-    categoryUrl(categotyrQuery || filterProducts);
-    setFilterProducts(categotyrQuery || filterProducts);
-  }, [filterProducts]);
+    categoryUrl(categotyrQuery || 'all');
+    setFilterProducts(filterProducts || 'all');
+  }, [categotyrQuery]);
 
   const onChangeDataType = async (e) => {
     setFilterProducts(e.target.value);
@@ -42,7 +41,7 @@ function HomePage(props) {
       <SelectBox
         onChangeDataType={onChangeDataType}
         categories={categoryState}
-        value={categotyrQuery || 'all'}
+        value={filterProducts || 'all'}
       />
       <ProductContainer
         products={
