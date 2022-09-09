@@ -29,13 +29,12 @@ const ProductContainer = (props) => {
 
   const currentPost = products && products.slice(indexOfFirst, indexOfLastPost);
 
-  const onChangePage = (pageNumber) => (setCurrentPage(pageNumber));
+  const onChangePage = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="product-list">
-      <div className="container">
-        <div className="col-12 d-flex flex-wrap">
-          {currentPost
+      <div className="row">
+        {currentPost
           && currentPost.map((item) => (
             <ProductItem
               key={item.id}
@@ -47,13 +46,13 @@ const ProductContainer = (props) => {
               rate={item.rating.rate}
             />
           ))}
-        </div>
-        <Pagination
-          perPage={perPage}
-          onChangePage={onChangePage}
-          totalPost={products.length}
-        />
       </div>
+      <Pagination
+        perPage={perPage}
+        onChangePage={onChangePage}
+        totalPost={products.length}
+        currentPage={currentPage}
+      />
     </div>
   );
 };

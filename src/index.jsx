@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 import rootSagas from './redux/rootSaga';
 import store, { sagaMiddleware } from './redux/store';
 
-import './index.css';
+// import './index.css';
 
 sagaMiddleware.run(rootSagas);
 

@@ -17,6 +17,8 @@ function* getCategorysProducts(action) {
     type: GET_CATEGORY_PRODUCTS_PENDING,
   });
 
+  console.log('action.payload', action.payload);
+
   try {
     const {
       data,
@@ -24,7 +26,6 @@ function* getCategorysProducts(action) {
       method: 'GET',
       url: `https://fakestoreapi.com/products/category/${action.payload}`,
     });
-
     yield put({
       type: GET_CATEGORY_PRODUCTS_SUCCESS,
       payload: data,

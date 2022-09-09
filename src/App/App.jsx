@@ -1,9 +1,14 @@
+/* eslint-disable */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import Navigation from '../components/Navigation';
+import Navigation from '../layout/Navigation';
+import Footer from '../layout/Footer';
 import Form from '../components/Form';
 import AppRouter from '../router';
+import '../assets/css/bootstrap.min.css';
+import '../assets/css/templatemo.css';
+import '../assets/css/custom.css';
 
 function App(props) {
   const { getUser, userState } = props;
@@ -22,6 +27,7 @@ function App(props) {
         <Navigation username={userState.user.username} />
         {accessToken === null && <Form />}
       </AppRouter>
+      <Footer />
     </div>
   );
 }
