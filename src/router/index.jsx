@@ -21,8 +21,6 @@ const AppRouter = () => {
 
 function AppWrapper(props) {
   const { children } = props;
-  // const accessToken = localStorage.getItem('AUTHENTICATE_TOKEN');
-  // console.log('accessToken', accessToken);
   return (
     <>
       {children}

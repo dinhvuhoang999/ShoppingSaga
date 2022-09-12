@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 function Form(props) {
   const { login } = props;
-
+  // console.log('props form', props);
   const [name, setName] = useState('');
 
   const [password, setPassword] = useState('');

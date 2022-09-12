@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function Form(props) {
+function LoginPage(props) {
   const { login } = props;
-
   const [name, setName] = useState('');
 
   const [password, setPassword] = useState('');
@@ -25,33 +24,30 @@ function Form(props) {
   };
 
   return (
-    <form>
-      <div className="form-group">
-        <p>User</p>
-        <input onChange={handleChangeName} className="form-control" />
+    <div className="login-page">
+      <div className="form">
+        <form className="login-form">
+          <input type="name" placeholder="username" onChange={handleChangeName} />
+          <input type="password" placeholder="password" onChange={handleChangePassword} />
+          <button type="submit" onClick={handleSubmit}>login</button>
+          <p className="message">
+            Not registered?
+            {' '}
+            <a href="s#">Create an account</a>
+          </p>
+        </form>
       </div>
-      <div className="form-group">
-        <p htmlFor="firstName">Password</p>
-        <input
-          onChange={handleChangePassword}
-          type="name"
-          className="form-control"
-          placeholder="Password"
-        />
-      </div>
-      <button onClick={handleSubmit} type="submit" className="btn btn-primary">
-        Submit
-      </button>
-    </form>
+    </div>
+
   );
 }
 
-Form.propTypes = {
-  login: PropTypes.func,
+LoginPage.propTypes = {
+  login: PropTypes.func.isRequired,
 };
 
-Form.defaultProps = {
-  login: () => {},
+LoginPage.defaultProps = {
+  // login: () => {},
 };
 
-export default Form;
+export default LoginPage;
