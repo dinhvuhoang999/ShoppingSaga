@@ -20,7 +20,7 @@ function CartItem(props) {
   const onDecreaseQuantity = () => decrease(item);
   const onRemoveButton = () => remove(item);
   const onBlurInput = () => update(item.id, amount);
-  console.log('item', item);
+
   return (
     <>
       <div className="item">

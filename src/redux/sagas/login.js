@@ -19,7 +19,7 @@ function* login(action) {
   yield put({
     type: LOGIN_PENDING,
   });
-  console.log('action');
+
   try {
     const {
       data,
@@ -31,7 +31,7 @@ function* login(action) {
         password: action.payload.passwordLogin,
       },
     });
-    console.log('AUTHENTICATE_TOKENm');
+
     localStorage.setItem('AUTHENTICATE_TOKEN', data.token);
 
     yield put({

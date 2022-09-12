@@ -34,7 +34,6 @@ const ProductContainer = (props) => {
 
   const onChangePage = (pageNumber) => {
     setCurrentPage(pageNumber);
-    console.log('location', location);
     navigate(`${location.pathname}?page=${pageNumber}`);
   };
 
