@@ -4,7 +4,7 @@
 import React from 'react';
 
 const Footer = () => (
-  <footer className="bg-dark" id="tempaltemo_footer">
+  <footer className="bg-dark mt-3" id="tempaltemo_footer">
     <div className="container">
       <div className="row">
 

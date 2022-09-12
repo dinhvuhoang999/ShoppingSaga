@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
+import { useRoutes } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import Homepage from '../pages/HomePage';
-import Cart from '../components/Cart';
+import Cart from '../pages/ShoppingCart';
 import MyItem from '../components/MyItem';
 import Shop from '../pages/Shop';
 import LoginPage from '../pages/LoginPage';
@@ -21,11 +21,13 @@ const AppRouter = () => {
 
 function AppWrapper(props) {
   const { children } = props;
+  // const accessToken = localStorage.getItem('AUTHENTICATE_TOKEN');
+  // console.log('accessToken', accessToken);
   return (
-    <Router>
+    <>
       {children}
       <AppRouter />
-    </Router>
+    </>
   );
 }
 

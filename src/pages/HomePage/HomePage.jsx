@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { useNavigate, useLocation } from 'react-router-dom';
-import ProductContainer from '../../components/ProductContainer';
-import SelectBox from '../../components/SelectBox';
+import { useLocation } from 'react-router-dom';
+// import ProductContainer from '../../components/ProductContainer';
+// import SelectBox from '../../components/SelectBox';
+import SlideBanner from '../../components/SlideBanner';
 
 function HomePage(props) {
   const {
     getProducts,
     getCategories,
-    productsState,
-    categoryState,
+    // productsState,
+    // categoryState,
     categoryUrl,
-    categoryProductState,
+    // categoryProductState,
   } = props;
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
@@ -31,25 +32,26 @@ function HomePage(props) {
     setFilterProducts(filterProducts || 'all');
   }, [categotyrQuery]);
 
-  const onChangeDataType = async (e) => {
-    setFilterProducts(e.target.value);
-    navigate(`/?category=${e.target.value}`);
-  };
+  // const onChangeDataType = async (e) => {
+  //   setFilterProducts(e.target.value);
+  //   navigate(`/?category=${e.target.value}`);
+  // };
 
   return (
     <>
-      <SelectBox
+      <SlideBanner />
+      {/* <SelectBox
         onChangeDataType={onChangeDataType}
         categories={categoryState}
         value={filterProducts || 'all'}
-      />
-      <ProductContainer
+      /> */}
+      {/* <ProductContainer
         products={
           filterProducts && filterProducts === 'all'
             ? productsState.products
             : categoryProductState.products
         }
-      />
+      /> */}
     </>
   );
 }
@@ -58,9 +60,9 @@ HomePage.propTypes = {
   getProducts: PropTypes.func.isRequired,
   getCategories: PropTypes.func.isRequired,
   categoryUrl: PropTypes.func.isRequired,
-  productsState: PropTypes.instanceOf(Object).isRequired,
-  categoryState: PropTypes.instanceOf(Object).isRequired,
-  categoryProductState: PropTypes.instanceOf(Object).isRequired,
+  // productsState: PropTypes.instanceOf(Object).isRequired,
+  // categoryState: PropTypes.instanceOf(Object).isRequired,
+  // categoryProductState: PropTypes.instanceOf(Object).isRequired,
 };
 
 export default HomePage;

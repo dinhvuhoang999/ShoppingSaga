@@ -1,13 +1,15 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 
+// eslint-disable-next-line no-unused-vars
 import { useNavigate, useLocation } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
 function Pagination(props) {
+  // eslint-disable-next-line no-unused-vars
   const navigate = useNavigate();
-  const location = useLocation();
+  // const location = useLocation();
 
   const {
     perPage,
@@ -16,11 +18,10 @@ function Pagination(props) {
     onChangePage,
   } = props;
   const pageNumber = [];
-  console.log(currentPage);
   for (let i = 1; i <= Math.ceil(totalPost / perPage); i += 1) {
     pageNumber.push(i);
   }
-
+  // console.log('location.search', location);
   const onKeyDownDiv = () => null;
   return (
     <nav>
@@ -31,8 +32,8 @@ function Pagination(props) {
               type="button"
               onKeyDown={onKeyDownDiv}
               tabIndex={0}
-              onClick={() => onChangePage(navigate(`${location.pathname}?page=${number}`))}
-              className={`page-link ${currentPage === number ? 'active' : ''} rounded-0 shadow-sm border-top-0`}
+              onClick={() => onChangePage(number)}
+              className={`page-link ${number === currentPage ? 'active' : ''} rounded-0 shadow-sm border-top-0`}
             >
               {number}
             </button>
@@ -46,12 +47,12 @@ function Pagination(props) {
 Pagination.propTypes = {
   perPage: PropTypes.number.isRequired,
   totalPost: PropTypes.number.isRequired,
-  currentPage: PropTypes.number,
+  currentPage: PropTypes.number.isRequired,
   onChangePage: PropTypes.func.isRequired,
 };
 
-Pagination.defaultProps = {
-  currentPage: 1,
-};
+// Pagination.defaultProps = {
+//   currentPage: 1,
+// };
 
 export default Pagination;

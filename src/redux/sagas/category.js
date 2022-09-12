@@ -17,8 +17,6 @@ function* getCategorysProducts(action) {
     type: GET_CATEGORY_PRODUCTS_PENDING,
   });
 
-  console.log('action.payload', action.payload);
-
   try {
     const {
       data,

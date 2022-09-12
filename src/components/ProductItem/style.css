@@ -1,8 +1,8 @@
-.image {
+/* .image {
     position: absolute;
     right: 12px;
     top: 10px
-}
+} */
 
 .td_img-contain {
     object-fit: contain;

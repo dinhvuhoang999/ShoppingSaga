@@ -8,6 +8,8 @@ import { Link } from 'react-router-dom';
 
 function SelectBox(props) {
   const { categories, onClickDataType, value } = props;
+  // console.log('value', value);
+  // console.log(categories);
   return (
     <>
       <h1 className="h2 pb-4">Categories</h1>
@@ -16,7 +18,7 @@ function SelectBox(props) {
           && categories.category.map((item) => (
             <li className="pb-3" key={item} value={item}>
               <button
-                className="button-category collapsed d-flex justify-content-between h3 text-decoration-none"
+                className={`button-category ${value === item ? 'text-danger' : ''} collapsed d-flex justify-content-between h3 text-decoration-none`}
                 onClick={() => onClickDataType(item)}
               >
                 {item}

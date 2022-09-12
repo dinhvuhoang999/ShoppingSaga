@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
@@ -7,6 +7,9 @@ import ProductItem from '../ProductItem';
 import Pagination from '../Pagination';
 
 const ProductContainer = (props) => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const { products } = props;
 
   const { search } = useLocation();
@@ -18,7 +21,7 @@ const ProductContainer = (props) => {
 
     const numberQuery = params.get('page');
 
-    setCurrentPage(numberQuery || 1);
+    setCurrentPage(Math.floor(numberQuery) || 1);
   }, [currentPage]);
 
   const perPage = 5;
@@ -29,7 +32,11 @@ const ProductContainer = (props) => {
 
   const currentPost = products && products.slice(indexOfFirst, indexOfLastPost);
 
-  const onChangePage = (pageNumber) => setCurrentPage(pageNumber);
+  const onChangePage = (pageNumber) => {
+    setCurrentPage(pageNumber);
+    console.log('location', location);
+    navigate(`${location.pathname}?page=${pageNumber}`);
+  };
 
   return (
     <div className="product-list">

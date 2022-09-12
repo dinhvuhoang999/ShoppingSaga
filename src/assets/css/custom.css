@@ -358,3 +358,23 @@ Custom Css
     height: 100%;
     object-fit: cover;
 }
+
+.swiper-button-next:after, .swiper-rtl .swiper-button-prev:after {
+    content: 'next';
+    font-size: 50px;
+    font-weight: 800;
+}
+
+.swiper-button-prev:after, .swiper-rtl .swiper-button-prev:after {
+    content: 'prev';
+    font-size: 50px;
+    font-weight: 800;
+}
+
+.swiper-button-next {
+    color: #00800075;
+}
+
+.swiper-button-prev {
+    color: #00800075;
+}

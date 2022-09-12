@@ -1,10 +1,11 @@
 import React from 'react';
+
 import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 
 function Navigation(props) {
-  const { cartState, username } = props;
+  const { cartState, username, logout } = props;
 
   return (
     <div>
@@ -150,29 +151,26 @@ function Navigation(props) {
                   {cartState.numberCart}
                 </span>
               </Link>
-              <a
-                className="nav-icon position-relative text-decoration-none"
-                href="a"
-              >
-                {localStorage.getItem('AUTHENTICATE_TOKEN') === null ? (
-                  <i className="fa fa-fw fa-user text-dark mr-3" />
-                ) : (
-                  <>
-                    <div className="info-user d-flex align-center">
+              {localStorage.getItem('AUTHENTICATE_TOKEN') === null ? (
+                <i className="fa fa-fw fa-user text-dark mr-3" />
+              ) : (
+                <div className="d-flex align-items-center">
+                  <div className="info-user d-flex align-items-center">
+                    <div className="user-info">
                       <i className="fa fa-fw fa-user text-dark mr-2" />
-                      <div>{username}</div>
+                      {username}
                     </div>
-                    {/* <button type="submit" onClick={logout}>
-                      logout
-                    </button> */}
-                  </>
-                )}
-                {/* <span className="p
+                  </div>
+                  <button className="btn ml-3" type="submit" onClick={logout}>
+                    logout
+                  </button>
+                </div>
+              )}
+              {/* <span className="p
                 osition-absolute
                 top-0 left-100 translate-middle badge rounded-pill bg-light text-dark">
                   +99
                 </span> */}
-              </a>
             </div>
           </div>
         </div>
@@ -232,7 +230,7 @@ function Navigation(props) {
 Navigation.propTypes = {
   cartState: PropTypes.instanceOf(Object).isRequired,
   username: PropTypes.string,
-  // logout: PropTypes.func.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 Navigation.defaultProps = {

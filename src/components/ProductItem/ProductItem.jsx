@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
+import ReactStars from 'react-rating-stars-component';
+
 import './style.css';
 
 import PropTypes from 'prop-types';
@@ -26,7 +28,6 @@ function ProductItem(props) {
       rate,
     });
   };
-
   return (
     <>
       {/* <div className="height d-flex justify-content-center align-items-center">
@@ -117,7 +118,19 @@ function ProductItem(props) {
                 <span className="product-color-dot color-dot-green float-left rounded-circle ml-1" />
               </li>
             </ul>
-            <ul className="list-unstyled d-flex justify-content-center mb-1">
+            <ReactStars
+              count={5}
+              value={rate}
+              edit={false}
+              // onChange={ratingChanged}
+              size={24}
+              isHalf
+              emptyIcon={<i className="far fa-star" />}
+              halfIcon={<i className="fa fa-star-half-alt" />}
+              fullIcon={<i className="fa fa-star" />}
+              activeColor="#ffd700"
+            />
+            {/* <ul className="list-unstyled d-flex justify-content-center mb-1">
               <li>
                 <i className="text-warning fa fa-star" />
                 <i className="text-warning fa fa-star" />
@@ -125,7 +138,7 @@ function ProductItem(props) {
                 <i className="text-muted fa fa-star" />
                 <i className="text-muted fa fa-star" />
               </li>
-            </ul>
+            </ul> */}
             <p className="text-center mb-0">{price}</p>
           </div>
         </div>

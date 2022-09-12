@@ -9,7 +9,6 @@ import AppRouter from '../router';
 import '../assets/css/bootstrap.min.css';
 import '../assets/css/templatemo.css';
 import '../assets/css/custom.css';
-
 function App(props) {
   const { getUser, userState } = props;
 
