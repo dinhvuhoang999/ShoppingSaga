@@ -9,8 +9,10 @@ import userReducer from './user';
 import myItemReducer from './myItem';
 import categoryReducer from './categories';
 import categoryProductReducer from './category';
+import productReducer from './product';
 
 const appReducer = combineReducers({
+  productDetail: productReducer,
   productsState: productsReducer,
   cartState: cartReducer,
   LoginState: loginReducer,

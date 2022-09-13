@@ -54,6 +54,7 @@ const slideBanner = () => (
   <Swiper modules={[Navigation, Pagination, Scrollbar, A11y]} navigation>
     {dataSlides.map((item) => (
       <SwiperSlide
+        key={item.id}
         className="template-mo-zay-hero-carousel"
         id="template-mo-zay-hero-carousel"
       >

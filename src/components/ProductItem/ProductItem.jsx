@@ -1,11 +1,12 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
-import ReactStars from 'react-rating-stars-component';
-
-import './style.css';
 
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
+import RateStart from '../RateStart';
+import './style.css';
 
 function ProductItem(props) {
   const {
@@ -17,7 +18,6 @@ function ProductItem(props) {
     rate,
     addToCart,
   } = props;
-
   const onHandleAddToCart = () => {
     addToCart({
       id,
@@ -82,12 +82,12 @@ function ProductItem(props) {
                   </a>
                 </li>
                 <li>
-                  <a
+                  <Link
                     className="btn btn-success text-white mt-2"
-                    href="shop-single.html"
+                    to={`/productDetail/${id}`}
                   >
                     <i className="far fa-eye" />
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <a
@@ -118,18 +118,7 @@ function ProductItem(props) {
                 <span className="product-color-dot color-dot-green float-left rounded-circle ml-1" />
               </li>
             </ul>
-            <ReactStars
-              count={5}
-              value={rate}
-              edit={false}
-              // onChange={ratingChanged}
-              size={24}
-              isHalf
-              emptyIcon={<i className="far fa-star" />}
-              halfIcon={<i className="fa fa-star-half-alt" />}
-              fullIcon={<i className="fa fa-star" />}
-              activeColor="#ffd700"
-            />
+            <RateStart rate={rate} />
             {/* <ul className="list-unstyled d-flex justify-content-center mb-1">
               <li>
                 <i className="text-warning fa fa-star" />

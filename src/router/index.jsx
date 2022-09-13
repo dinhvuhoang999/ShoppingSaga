@@ -7,6 +7,7 @@ import Cart from '../pages/ShoppingCart';
 import MyItem from '../components/MyItem';
 import Shop from '../pages/Shop';
 import LoginPage from '../pages/LoginPage';
+import ProductDetail from '../pages/ProductDetails';
 
 const AppRouter = () => {
   const routes = useRoutes([
@@ -15,6 +16,7 @@ const AppRouter = () => {
     { path: '/MyItem', element: <MyItem /> },
     { path: '/Shop', element: <Shop /> },
     { path: '/LoginPage', element: <LoginPage /> },
+    { path: '/ProductDetail/:id', element: <ProductDetail /> },
   ]);
   return routes;
 };
@@ -30,7 +32,11 @@ function AppWrapper(props) {
 }
 
 AppWrapper.propTypes = {
-  children: PropTypes.instanceOf(Object).isRequired,
+  children: PropTypes.instanceOf(Array),
+};
+
+AppWrapper.defaultProps = {
+  children: [],
 };
 
 export default AppWrapper;

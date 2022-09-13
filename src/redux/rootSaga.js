@@ -4,6 +4,7 @@ import {
 } from 'redux-saga/effects';
 
 import products from './sagas/products';
+import product from './sagas/product';
 import login from './sagas/login';
 import user from './sagas/user';
 import categories from './sagas/categories';
@@ -16,5 +17,6 @@ export default function* rootSagas() {
     fork(user),
     fork(categories),
     fork(category),
+    fork(product),
   ]);
 }
