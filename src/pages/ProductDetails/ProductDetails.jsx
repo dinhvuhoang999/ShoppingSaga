@@ -8,13 +8,25 @@ import { useParams } from 'react-router-dom';
 import RateStart from '../../components/RateStart';
 
 const ProductDetails = (props) => {
-  const { getProduct, productDetail } = props;
+  const {
+    isLoading,
+    getProduct,
+    addToCart,
+    increase,
+    decrease,
+    cart,
+    productDetail,
+  } = props;
   const [rateStart, setRateStart] = useState(0);
   const { id } = useParams();
 
   useEffect(() => {
     getProduct({ id });
   }, []);
+  const onAddToCart = (e) => {
+    e.preventDefault();
+    addToCart({ ...productDetail });
+  };
 
   return (
     <div>
@@ -39,7 +51,7 @@ const ProductDetails = (props) => {
                     $
                     {productDetail.price}
                   </p>
-                    <RateStart rate={productDetail.rating?.rate} />
+                  {!isLoading && <RateStart rate={productDetail.rating?.rate} />}
                   <p className="py-2">
                     <span className="list-inline-item text-dark">
                       Rating
@@ -157,6 +169,7 @@ const ProductDetails = (props) => {
                           className="btn btn-success btn-lg"
                           name="submit"
                           value="addtocard"
+                          onClick={onAddToCart}
                         >
                           Add To Cart
                         </button>
@@ -175,10 +188,19 @@ const ProductDetails = (props) => {
 
 ProductDetails.propTypes = {
   getProduct: PropTypes.func.isRequired,
+  addToCart: PropTypes.func,
+  cart: PropTypes.instanceOf(Object),
+  increase: PropTypes.func,
+  decrease: PropTypes.func,
   productDetail: PropTypes.instanceOf(Object),
+  isLoading: PropTypes.bool.isRequired,
 };
 
 ProductDetails.defaultProps = {
+  increase: () => {},
+  decrease: () => {},
+  addToCart: () => {},
+  cart: {},
   productDetail: {},
 };
 

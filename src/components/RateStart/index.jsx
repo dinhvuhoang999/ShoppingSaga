@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactStars from 'react-rating-stars-component';
 
 import PropTypes from 'prop-types';
@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 const RateStart = (props) => {
   // eslint-disable-next-line no-unused-vars
   const { rate } = props;
-  return (
+  console.log('rate', rate);
+  const rateStartComponent = () => (
     <ReactStars
       count={5}
       value={rate}
@@ -19,14 +20,21 @@ const RateStart = (props) => {
       activeColor="#ffd700"
     />
   );
+  useEffect(() => {
+    console.log('sss');
+    rateStartComponent();
+  }, [rate]);
+  return (
+    rateStartComponent()
+  );
 };
 
 RateStart.propTypes = {
-  rate: PropTypes.number.isRequired,
+  rate: PropTypes.number,
 };
 
-// RateStart.defaultProps = {
-//   rate: 0,
-// };
+RateStart.defaultProps = {
+  rate: 0,
+};
 
 export default RateStart;
